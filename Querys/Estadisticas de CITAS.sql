@@ -1,0 +1,33 @@
+use DGEMPRES01
+select * from CMNCITMED where CCMESTADO=3
+
+SELECT  DATEPART(YEAR, CCMFECCIT) Anio,
+		DATEPART(MONTH, CCMFECCIT) M,
+        DATENAME(MONTH, CCMFECCIT) Mes
+		, case CCMESTADO when 0 then 'Asignada' when 1 then 'Cancelada' when 2 then 'Cumplida'
+						 when 3 then 'Incumplida' when 4 then 'Facturada' when 5 then 'Inatencion' end Estado,
+        COUNT(ccmestado) Total 
+FROM    CMNCITMED
+WHERE   CCMFECCIT >= '2021-01-01' 
+AND     CCMFECCIT <= '2021-31-12'
+AND     CCMFECCIT < GETDATE()
+AND		CCMESTADO = 3
+GROUP BY DATEPART(YEAR, CCMFECCIT), DATENAME(MONTH, CCMFECCIT), DATEPART(MONTH, CCMFECCIT), CCMESTADO
+--GROUP BY DATEPART(YEAR, CCMFECCIT), DATEPART(MONTH, CCMFECCIT), CCMESTADO
+order by 1, 2
+
+
+SELECT  DATEPART(YEAR, CCMFECCIT) Anio,
+		DATEPART(MONTH, CCMFECCIT) M,
+        DATENAME(MONTH, CCMFECCIT) Mes,
+		--, case CCMESTADO when 0 then 'Asignada' when 1 then 'Cancelada' when 2 then 'Cumplida'
+		--				 when 3 then 'Incumplida' when 4 then 'Facturada' when 5 then 'Inatencion' end Estado,
+        COUNT(ccmestado) Total 
+FROM    CMNCITMED
+WHERE   CCMFECCIT >= '2021-01-01' 
+AND     CCMFECCIT <= '2021-31-12'
+AND     CCMFECCIT < GETDATE()
+--AND		CCMESTADO = 3
+GROUP BY DATEPART(YEAR, CCMFECCIT), DATENAME(MONTH, CCMFECCIT), DATEPART(MONTH, CCMFECCIT)--, CCMESTADO
+--GROUP BY DATEPART(YEAR, CCMFECCIT), DATEPART(MONTH, CCMFECCIT), CCMESTADO
+order by 1, 2

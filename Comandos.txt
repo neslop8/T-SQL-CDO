@@ -1,0 +1,18 @@
+git init
+git add .
+git config --global user.mail "neslop8@hotmail.com"
+git config --global user.name "Neslop"
+git commit -m "T-SQL Clínica del Occidente"
+
+git remote add origin https://github.com/neslop8/T-SQL-CDO.git
+			"o"
+git remote set-url https://github.com/neslop8/T-SQL-CDO.git
+
+git remote add origin https://github.com/neslop8/T-SQL-CDO.git
+
+git push -u origin master
+git push --force origin master
+
+git clone https://github.com/neslop8/T-SQL-CDO.git
+
+git clone https://github.com/JhonnyCamilo/T-SQL-CDO.git

@@ -1,0 +1,33 @@
+use dgempres01
+select * from GENMANUAL where GENMANUAL in ('109','636','637')
+select * from GENFACSOA where GENMANUAL1=184
+
+select * from GENSERIPS where SIPCODIGO like 'Z%'
+select * from GENPAQUET where GENSERIPS1 in (select OID from GENSERIPS where SIPCODIGO like 'Z%')
+
+select SPATIPSER, COUNT(*) from GENPAQUET where GENSERIPS1 in (select OID from GENSERIPS where SIPCODIGO like 'Z%')
+group by SPATIPSER
+
+
+select * from GENSERIPS where oid in (
+select GENSERIPS1 from GENPAQUET where GENSERIPS1 in (select OID from GENSERIPS where SIPCODIGO like 'Z%')
+and SPATIPSER=1)
+
+begin tran xxx
+insert into GENFACSOA (GENMANUAL1, GENGRUQUI1, SFSFACCIR, SFSFACANE, SFSFACAYU, SFSFACSAL, SFSFACMAT, SFSFACNIN, OptimisticLockField)
+select 184, GENGRUQUI1, SFSFACCIR, SFSFACANE, SFSFACAYU, SFSFACSAL, SFSFACMAT, SFSFACNIN, OptimisticLockField 
+from GENFACSOA where GENMANUAL1=49
+commit tran xxx
+
+begin tran xxx
+--delete GENFACSOA where GENMANUAL1=184
+update GENFACSOA set SFSFACCIR=SFSFACCIR*0.7 where GENMANUAL1=184
+update GENFACSOA set SFSFACANE=SFSFACANE*0.7 where GENMANUAL1=184
+update GENFACSOA set SFSFACAYU=SFSFACAYU*0.7 where GENMANUAL1=184
+update GENFACSOA set SFSFACSAL=SFSFACSAL*0.7 where GENMANUAL1=184
+update GENFACSOA set SFSFACMAT=SFSFACMAT*0.7 where GENMANUAL1=184
+commit tran xxx
+
+
+
+
