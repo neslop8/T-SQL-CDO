@@ -46,7 +46,7 @@ inner join GENMANUAL man on ser.GENMANUAL1=man.OID
 inner join GENSERIPS ips on ser.GENSERIPS1=ips.OID --and ips.GENARESER1 in (189, 206)
 --inner join GENARESER are on ips.GENARESER1=are.OID 
 --inner join GENPLACUB cub  on cub.GENMANSER1=ser.OID
-where man.GENMANUAL='C62' AND tar.SMTFECFIN >= GETDATE()
+where man.GENMANUAL='508' AND tar.gensalmin1=2 and tar.SMTFECFIN='2021-31-12 11:59:59'--tar.SMTFECFIN >= GETDATE()
 --and ips.OID in (7251, 9762)
 --group by ser.SMSTIPLIQ
 --order by 4
@@ -56,12 +56,12 @@ select * from GENMANUAL where OID in (3,23,4,5,6,7,8,9,24,10,11,12,13,14,15,16,1
 ------------------------------------------------------------------------------------------------------------------------------
 begin tran xxx
 --update GENMANTAR set SMTVALSER=(SMTVALSER * 1.9797), SMTVALREC=(SMTVALREC * 1.9797) where OID in (
-update GENMANTAR set SMTVALSER=round(SMTVALSER, -2), SMTVALREC=round(SMTVALREC, -2) where OID in (--SOAT
+--update GENMANTAR set SMTVALSER=round(SMTVALSER, -2), SMTVALREC=round(SMTVALREC, -2) where OID in (--SOAT
 --update GENMANTAR set SMTVALSER=round(SMTVALSER, 0), SMTVALREC=round(SMTVALREC, 0) where OID in (--ISS
 --update DGEMPRES01..GENMANTAR set SMTVALSER=round((SMTVALSER * 0.6), 0), SMTVALREC=round((SMTVALREC * 0.6), 0) where OID in (--ISS
 --update GENMANTAR set SMTVALREC=(SMTVALREC * 1.1007), SMTVALSER=(SMTVALSER * 1.1007) where OID in (--ISS
 --update GENMANTAR set SMTFECINI='2021-01-03 00:00:02' where OID in (
----update GENMANTAR set SMTFECFIN='2021-01-03 00:00:01' where OID in (
+update GENMANTAR set SMTFECFIN='2021-31-12 23:59:59' where OID in (
 --update GENMANTAR set GENSALMIN1=11 where OID in (
 --update GENMANTAR set GENSALMIN1=1 where OID in (
 --update GENMANSER set SMSTIPLIQ=2 where OID in (
@@ -70,7 +70,7 @@ from DGEMPRES01..GENMANSER ser inner join DGEMPRES01..GENMANTAR tar on tar.GENMA
 inner join DGEMPRES01..GENMANUAL man on ser.GENMANUAL1=man.OID
 inner join DGEMPRES01..GENSERIPS ips on ser.GENSERIPS1=ips.OID --and ips.GENARESER1 in (146, 215)
 --where man.GENMANUAL='514' AND tar.SMTFECFIN = '2021-09-04 23:59:59'
-where man.GENMANUAL='637' AND tar.SMTFECFIN >= GETDATE() and tar.GENSALMIN1=3
+where man.GENMANUAL='508' AND tar.gensalmin1=2 and tar.SMTFECFIN='2021-31-12 11:59:59'--tar.SMTFECFIN >= GETDATE()
 )
 commit tran xxx
 rollback tran xxx
