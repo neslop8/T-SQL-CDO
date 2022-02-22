@@ -8,9 +8,10 @@ select * from CDO02_21..rep_consulta WHERE query like '%GENCONTRA%'
 select * from CDO02_21..rep_consulta WHERE query like '%GENDETCON%'
 
 select * from DGEMPRES01..GENUSUARIO where OID='748'-----567
-select * from DGEMPRES01..GENUSUARIO where usunombre = 'CAPLOZANO'-----567
-select * from DGEMPRES01..GENUSUARIO where USUDESCRI like '%valenzuela%'-----567
-select * from DGEMPRES01..GELOG202106 where GENUSUARIO=1081 order by OID desc
+select * from DGEMPRES01..GENUSUARIO where usunombre in ('yacarpio','MBUSTOS')-----567
+select * from DGEMPRES21..GENUSUARIO where usunombre in ('MBUSTOZ','MBUSTOS')-----567
+select * from DGEMPRES01..GENUSUARIO where USUDESCRI like '%valentina%'-----567
+select * from DGEMPRES01..GELOG202201 where GENUSUARIO=457 order by OID desc
 select * from DGEMPRES01..GELOG202106 where GENUSUARIO=10 order by OID desc
 select * from DGEMPRES01..XPObjectType where OID in (1530)
 

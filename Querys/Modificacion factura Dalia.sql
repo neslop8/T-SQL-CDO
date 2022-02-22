@@ -22,17 +22,42 @@ select top 5 * from GENTERCERP where OID in (249)-----69
 ----------------------------------------------------------------------------------------
 select * from INNDOCUME order by OID desc
 select * from INNDOCUME where OID in (766002, 845483)
-select * from INNDOCUME where IDCONSEC in ('00000000008468')
-select * from INNDOCUME where OID in (671918)
-select ICCFACPRO, PGNCXP, * from INNCCOMPR where OID in (1385564)----B-115266
-select CXPDOCUME, * from PGNCXP where OID in (20317)
-
+select * from INNDOCUME where IDCONSEC in ('00000000009115')
+select * from INNDOCUME where OID in (1285276)
+select ICCFACPRO, PGNCXP, * from INNCCOMPR where OID in (1475899)----B-115266
+select CXPDOCUME, * from PGNCXP where OID in (21771)
+select CXPDOCUME, * from PGNCXP where CXPDOCUME in ('LM331080','331080')
+select CXPDOCUME, * from PGNCXP where CXPDOCUME in ('FVE25949','FVEC25949')
 
 Begin tran xxx
-update INNCCOMPR set ICCFACPRO='FE81194' where OID=1385564---FE1194
-update PGNCXP set CXPDOCUME='FE81194' where OID in (20317)----FE1194
+update INNCCOMPR set ICCFACPRO='FVEC25949' where OID=1475899---FVE25949
+update PGNCXP set CXPDOCUME='FVEC25949' where OID in (21771)----FVE25949
 commit tran xxx
 rollback tran xxx
+
+update INNCCOMPR set ICCFACPRO='LM331080' where OID=1475917---331080
+update PGNCXP set CXPDOCUME='LM331080' where OID in (21772)----331080
+
+update INNCCOMPR set ICCFACPRO='FACT10368' where OID=1468985---FECT10368
+update PGNCXP set CXPDOCUME='FACT10368' where OID in (21688)----FECT10368
+
+update INNCCOMPR set ICCFACPRO='BG-33742' where OID=1383366---BF33742
+update PGNCXP set CXPDOCUME=' BG-33742' where OID in (20209)----BF33742
+
+update INNCCOMPR set ICCFACPRO='FE01-203260' where OID=1285276---F01-203260
+update PGNCXP set CXPDOCUME='FE01-203260' where OID in (18393)----F01-203260
+
+update INNCCOMPR set ICCFACPRO='NP25175' where OID=1339038---NP2517
+update PGNCXP set CXPDOCUME='NP25175' where OID in (19368)----NP2517
+
+update INNCCOMPR set ICCFACPRO='FV70603' where OID=1417782---FV69746
+update PGNCXP set CXPDOCUME='FV70603' where OID in (20880)----FV69746
+
+update INNCCOMPR set ICCFACPRO='HNE2890' where OID=1420864---05
+update PGNCXP set CXPDOCUME='HNE2890' where OID in (20936)----05
+
+update INNCCOMPR set ICCFACPRO='FE81194' where OID=1385564---FE1194
+update PGNCXP set CXPDOCUME='FE81194' where OID in (20317)----FE1194
 
 update INNCCOMPR set ICCFACPRO='MDD1026719' where OID=1338935---MDD1026717
 update PGNCXP set CXPDOCUME='MDD1026719' where OID in (19361)----MDD1026717

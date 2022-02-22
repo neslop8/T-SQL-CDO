@@ -1,20 +1,20 @@
 use DGEMPRES01
 select * from ADNINGRESO where AINCONSEC=1971257
 
-select top 5 * from GENPACIEN where PACNUMDOC='1013666939'-----11162
-select top 5 * from GENPACIEN where OID=105584
-select * from GENSERIPS where SIPCODIGO in ('906317','906317')
-select AINESTADO, * from ADNINGRESO where GENPACIEN=105584
+select top 5 * from GENPACIEN where PACNUMDOC='1022393328'-----11162
+select top 5 * from GENPACIEN where OID=181326
+select * from GENSERIPS where SIPCODIGO in ('901236','901236')
+select AINESTADO, * from ADNINGRESO where GENPACIEN=56378
 select AINESTADO, * from ADNINGRESO where AINCONSEC=201264
 select * from GENSERIPS where SIPCODIGO in ('906317','906317')
 select * from GENSERIPS where OID in (4518)
-select * from GENSERIPS where OID in (2639, 2646, 2654, 2478, 2671)
-select top 5 * from HCNFOLIO where GENPACIEN in (105584) AND HCNUMFOL=16
-select HCNRESEXA, * from HCNSOLEXA where HCNFOLIO in (1094719) and GENSERIPS in (4859)
+select * from GENSERIPS where OID in (4356, 3785, 4491, 4512, 4494, 4543, 4538, 4497, 4518, 4520)
+select * from HCNFOLIO where GENPACIEN in (181326) AND OID=1192839
+select HCNRESEXA, * from HCNSOLEXA where HCNFOLIO in (select OID from HCNFOLIO where GENPACIEN in (56378)) and GENSERIPS in (4293)
+select HCNRESEXA, * from HCNSOLEXA where HCNFOLIO in (1225471)
 
-select * from HCNSOLEXA where ADNINGRESO in (244712)
-select HCNRESEXA, * from HCNSOLEXA where GENPACIEN in (105584)
-select HCNSOLEXA, * from HCNRESEXA where HCNSOLEXA in (983658)
+select * from HCNSOLEXA where ADNINGRESO in (348892) and GENSERIPS in (4518)
+select HCNSOLEXA, * from HCNRESEXA where HCNSOLEXA in (1533979)
 
 select HCNSOLEXA, COUNT(*) from HCNRESEXA where HCNSOLEXA in (select OID from HCNSOLEXA where ADNINGRESO in (select OID from ADNINGRESO where GENPACIEN=78237))
 group by HCNSOLEXA  having COUNT(*) > 1
@@ -31,7 +31,7 @@ select * from GENSERIPS where oid in (4243, 4475)
 
 begin tran xxx
 --update HCNSOLEXA set GENSERIPS=3821 where OID=1065328
-update HCNRESEXA set HCRCONFIR=0 where OID in (758813)
+update HCNRESEXA set HCRCONFIR=0 where OID in (840153)
 delete HCNRESEXA where OID in (332082)
 update HCNSOLEXA set HCSREGSUS=0 where OID=764396
 delete HCNRESIMG where OID in (1860, 1859)
